@@ -22,22 +22,17 @@ class Mentor:
         self.courses_attached = []
 
 class Lecturer(Mentor):
-    def __init__(self, name, surname):
-        self.name = name
-        self.surname = surname
-        self.courses_attached = []
-        self.grades = {}
-        self.courses = []
+    grades = {}
 
-    def averagerating(self):
-        for value in self.grades.values():
-            print(value)
-
-
-
+    def averagerating(self,grades):
+        for value in grades.values():
+            sum = 0
+            sum += value
+            average = sum/len(self.grades)
+            return average
 
     def __str__(self):
-        res = f'Имя: {self.name} \nФамилия: {self.surname} \nСредняя оценка: '
+        res = f'Имя: {self.name} \nФамилия: {self.surname} \nСредняя оценка: {self.averagerating(self.grades)}'
         return res
 
 class Reviewer(Mentor):
@@ -53,11 +48,10 @@ class Reviewer(Mentor):
         else:
             return 'Ошибка'
 
-constantine = Reviewer('Constantine','Efremov')
-print(constantine)
-natasha = Lecturer('Natasha','Smirnova')
-natasha.averagerating()
-print(natasha)
+# constantine = Reviewer('Constantine','Efremov')
+# print(constantine)
+# natasha = Lecturer('Natasha','Smirnova')
+# print(natasha)
 best_student = Student('Ruoy', 'Eman', 'your_gender')
 best_student.courses_in_progress += ['Python']
 
@@ -69,4 +63,3 @@ cool_mentor.rate_hw(best_student, 'Python', 10)
 cool_mentor.rate_hw(best_student, 'Python', 10)
 
 print(best_student.grades)
-# print(some_reviewer)
